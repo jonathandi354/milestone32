@@ -28,6 +28,7 @@ namespace FlightSimulator.Views
             //vm = new FlightViewModel(flightModel);
             vm = new FlightViewModel(new FlightModel(new Client()));
             DataContext = vm;
+            //hj
                 
         
         }
