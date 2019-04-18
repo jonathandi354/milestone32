@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="FlightSimulator.Views.FlightControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulator.Views"
+             
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <TabControl>
+        <TabItem Header="Manual">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="8*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="1" Grid.Column="0" Content="throttle" VerticalAlignment="Center" Grid.ColumnSpan="2" Margin="15,74.333,514,81" Height="126">
+                    <Label.LayoutTransform>
+                        <RotateTransform Angle="270"/>
+                    </Label.LayoutTransform>
+                </Label>
+                <Slider Minimum="-1" Maximum="1" TickPlacement = "Both" TickFrequency="0.25"
+                        Grid.Row="2" Grid.Column="1" x:Name="rudderS" Value="{Binding Rudder, Mode=TwoWay}"></Slider>
+                <Slider Minimum="-1" Maximum="1" TickPlacement ="Both" 
+                        Grid.Row="1" Grid.Column="0" TickFrequency="0.25"
+                        HorizontalAlignment="Center" x:Name="throttleS" Value="{Binding Throttle, Mode=TwoWay}">
+                    <Slider.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </Slider.LayoutTransform>
+                </Slider>
+                
+                <Label Grid.Row="2" Grid.Column="1" Content="rudder" HorizontalAlignment="Center"
+                       VerticalAlignment="Bottom" Height="36"></Label>
+                <Label Grid.Row="2" Grid.Column="2" Content="{Binding ElementName=rudderS, Path=Value}" 
+                       HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                <Label Grid.Row="0" Grid.Column="0" Content="{Binding ElementName=throttleS, Path=Value}"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+                
+                
+                <Grid Grid.Row="1" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="8*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="8*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Grid.Row="1" Grid.Column="1">
+                        <local:Joystick x:Name="Joystick" Aileron="{Binding Aileron, Mode=TwoWay}" Elevator="{Binding Elevator, Mode=TwoWay}"></local:Joystick>
+                    </Viewbox>
+                </Grid>
+
+                <Label Grid.Row="0" Grid.Column="1" Content="aileron" HorizontalAlignment="Center"
+                       VerticalAlignment="Center"></Label>
+                <Label Grid.Row="1" Grid.Column="2" Content="elevator" HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                    <Label.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </Label.LayoutTransform>
+                </Label>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Aileron, Mode=TwoWay}" HorizontalAlignment="Center" MaxWidth="35"></TextBlock>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Elevator, Mode=TwoWay}" VerticalAlignment="Center" MaxWidth="35"
+                       HorizontalAlignment="Right">
+                    <TextBlock.LayoutTransform>
+                        <RotateTransform Angle="90"/>
+                    </TextBlock.LayoutTransform>
+                </TextBlock>  
+            </Grid>
+        </TabItem>
+        <TabItem Header="Auto Pilot">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="FlightCode"></TextBox>
+                <Button Grid.Row="1" Content="OK" Grid.Column="0"  Command="{Binding OkCommand}" DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=UserControl}}"></Button>
+                <Button Grid.Row="1" Content="Clear" Grid.Column="1" Click="Clear"></Button>
+            </Grid>
+                
+            
+        </TabItem>
+        
+        
+
+       
+
+    </TabControl>
+</UserControl>
