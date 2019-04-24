@@ -6,26 +6,32 @@ using System.Threading.Tasks;
 using FlightSimulator.Model.Interface;
 using System.Net.Sockets;
 using System.Threading;
+using System.IO;
 
 namespace FlightSimulator.Model
 {
     class Client:ITelnetClient
     {
-        TcpClient client;
+        /*TcpClient client;
         NetworkStream stream;
+        Stream s;
         public void connect(string ip, int port)
         {
-            client = new TcpClient(ip, port);
-            stream = client.GetStream();
-        }
-        public void write(string data)
+            //client = new TcpClient(ip, port);
+            //stream = client.GetStream();
+            s = client.GetStream();
+        }*/
+        public void write(string data, string ip, int port)
         {
             //Thread myThread = new Thread(() => writeOnThread(data));
             //myThread.Start();
             new Thread(delegate ()
             {
+                TcpClient client = new TcpClient(ip, port);
+                NetworkStream stream = client.GetStream();
                 string[] splited = data.Split('\n');
                 int i = 0;
+                
                 while (i < splited.Length)
                 {
                     splited[i] += "\r\n";
@@ -44,18 +50,37 @@ namespace FlightSimulator.Model
 
 
         }
-        private bool ruuning = false;
-        private void writeOnThread(string data)
+        private bool running = false;
+        public void writeOne(string str, string ip, int port)
         {
-            ruuning = true;
+            Thread myThread = new Thread(() => writeOnThread(str, ip, port));
+            if (!running)
+            {
+                myThread.Start();
+            }
+            
+
+        }
+        
+        private void writeOnThread(string str, string ip, int port)
+        {
+            running = true;
+            TcpClient client = new TcpClient(ip, port);
+            NetworkStream stream = client.GetStream();
+            string copy = str;
+            copy += "\r\n";
+            Byte[] message = System.Text.Encoding.ASCII.GetBytes(copy);
+            
+            stream.Write(message, 0, message.Length);
+            stream.Close();
+            client.Close();
+            
 
 
-
-
-            ruuning = false;
+            running = false;
         }
 
-        public string read()
+        /*public string read()
         {
             Byte[] data = new Byte[256];
             
@@ -66,11 +91,12 @@ namespace FlightSimulator.Model
             Int32 bytes = stream.Read(data, 0, data.Length);
             responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
             return responseData;
-        }
-        public void disconnect()
+        }*/
+        /*public void disconnect()
         {
-            stream.Close();
+            //stream.Dispose();
+           // stream.Close();
             client.Close();
-        }
+        }*/
     }
 }

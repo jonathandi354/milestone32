@@ -22,18 +22,22 @@ namespace FlightSimulator.Model
         public double Rudder { get; set; }
         
         public double Throttle { get; set; }
-        public void connect(string ip, int port)
+        /*public void connect(string ip, int port)
         {
             telnet.connect(ip, port);
-        }
-        public void disconnect()
+        }*/
+        /*public void disconnect()
         {
             //stop = true;
             telnet.disconnect();
-        }
-        public void write(string data)
+        }*/
+        public void write(string data, string ip, int port)
         {
-            telnet.write(data);
+            telnet.write(data, ip, port);
+        }
+        public void writeOne(string str, string ip, int port)
+        {
+            telnet.writeOne(str, ip, port);
         }
 
     }

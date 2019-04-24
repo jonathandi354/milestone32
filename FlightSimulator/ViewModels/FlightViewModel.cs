@@ -65,8 +65,12 @@ namespace FlightSimulator.ViewModels
             {
                 _model.Rudder = value;
                 NotifyPropertyChanged("Rudder");
-                this.connect("127.0.0.1", 5402);
-                write("set controls/flight/rudder "+value);
+                //this.connect("127.0.0.1", 5402);
+                writeOne("set controls/flight/rudder "+value, "127.0.0.1", 5402);
+                //disconnect();
+                //write("set controls/flight/rudder " + value);
+                //disconnect();
+
             }
         }
         public double Throttle
@@ -81,17 +85,21 @@ namespace FlightSimulator.ViewModels
                 NotifyPropertyChanged("Throttle");
             }
         }
-        public void connect(string ip, int port)
+        /*public void connect(string ip, int port)
         {
             _model.connect(ip, port);   
-        }
-        public void write(string data)
+        }*/
+        public void write(string data, string ip, int port)
         {
-            _model.write(data);
+            _model.write(data, ip, port);
         }
-        public void disconnect()
+        /*public void disconnect()
         {
             _model.disconnect();
+        }*/
+        public void writeOne(string str, string ip, int port)
+        {
+            _model.writeOne(str, ip, port);
         }
         
 

@@ -50,8 +50,8 @@ namespace FlightSimulator.Views
         private void Ok()
         {
             string data = FlightCode.Text;
-            vm.connect("127.0.0.1", 5402);
-            vm.write(data);
+            //vm.connect("127.0.0.1", 5402);
+            vm.write(data, "127.0.0.1", 5402);
             //disconnect automatically
 
 
