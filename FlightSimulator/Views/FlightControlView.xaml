@@ -86,7 +86,7 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="FlightCode"></TextBox>
+                <TextBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="FlightCode" TextChanged="TextChanged" ></TextBox>
                 <Button Grid.Row="1" Content="OK" Grid.Column="0"  Command="{Binding OkCommand}" DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1,AncestorType=UserControl}}"></Button>
                 <Button Grid.Row="1" Content="Clear" Grid.Column="1" Click="Clear"></Button>
             </Grid>
