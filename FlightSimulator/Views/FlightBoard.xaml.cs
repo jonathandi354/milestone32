@@ -35,7 +35,7 @@ namespace FlightSimulator.Views
         {
             InitiateVM(new InfoModel());
             InitializeComponent();
-            flightBoardVM.ConnectModel(IPAddress.Parse("127.0.0.1"), 5400);
+            //flightBoardVM.ConnectModel(IPAddress.Parse("127.0.0.1"), 5400);
         }
 
         public void InitiateVM(AFlightGearInfoModel m)
