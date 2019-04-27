@@ -28,46 +28,10 @@ namespace FlightSimulator.Views
             //vm = new FlightViewModel(flightModel);
             vm = new FlightViewModel(new FlightModel(new Client()));
             DataContext = vm;
-            //hj
+            
                 
         
         }
-        /*public SolidColorBrush FlightCodeBack
-        {
-            get;
-            set;
-        }*/
         
-
-        private void Clear(object sender, RoutedEventArgs args)
-        {
-            FlightCode.Clear();
-            FlightCode.Background = new SolidColorBrush(Colors.Transparent);
-        }
-        private ICommand _okCommand;
-        public ICommand OkCommand
-        {
-            get
-            {
-                return _okCommand ?? (_okCommand =
-                    new CommandHandler(() => Ok()));
-            }
-           
-        }
-        private void Ok()
-        {
-            string data = FlightCode.Text;
-            //vm.connect("127.0.0.1", 5402);
-            vm.write(data, "127.0.0.1", 5402);
-            //disconnect automatically
-
-            FlightCode.Background = new SolidColorBrush(Colors.Transparent);
-
-        }
-        
-        private void TextChanged(object sender, TextChangedEventArgs e)
-        {
-            FlightCode.Background = new SolidColorBrush(Colors.Red);
-        }
     }
 }
