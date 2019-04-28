@@ -87,6 +87,7 @@ namespace FlightSimulator.ViewModels
         }
         private void CancelClick()
         {
+            this.settingModel.ReloadSettings();
             CloseAction();
         }
 
