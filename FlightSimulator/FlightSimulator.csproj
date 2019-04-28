@@ -99,6 +99,7 @@
     <Compile Include="ViewModels\BaseNotify.cs" />
     <Compile Include="ViewModels\FlightBoardViewModel.cs" />
     <Compile Include="ViewModels\FlightViewModel.cs" />
+    <Compile Include="ViewModels\MainPageVM.cs" />
     <Compile Include="ViewModels\MyConverter.cs" />
     <Compile Include="ViewModels\SettingVM.cs" />
     <Compile Include="ViewModels\Windows\SettingsWindowViewModel.cs" />

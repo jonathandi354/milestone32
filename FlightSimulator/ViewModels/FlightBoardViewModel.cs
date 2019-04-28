@@ -37,7 +37,8 @@ namespace FlightSimulator.ViewModels
                 lat = value;
                 NotifyPropertyChanged("Lat");
             }
-        }
+        }
+
         private AFlightGearInfoModel model;
 
         public FlightBoardViewModel(AFlightGearInfoModel m)

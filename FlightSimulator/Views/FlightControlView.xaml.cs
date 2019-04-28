@@ -21,16 +21,9 @@ namespace FlightSimulator.Views
     /// </summary>
     public partial class FlightControlView : UserControl
     {
-        FlightViewModel vm;
         public FlightControlView()
         {
             InitializeComponent();
-            //vm = new FlightViewModel(flightModel);
-            vm = new FlightViewModel(new FlightModel(new Client()));
-            DataContext = vm;
-            
-                
-        
         }
         
     }

@@ -13,5 +13,11 @@ namespace FlightSimulator
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            MainWindow main = new MainWindow();
+            main.Control.DataContext = new FlightViewModel(new FlightModel(new Client()), );
+        }
     }
 }

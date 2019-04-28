@@ -8,6 +8,30 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <local:FlightControlView></local:FlightControlView>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+     
+      
+        
+        <local:FlightControlView Grid.Column="1" x:Name="Control"></local:FlightControlView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="10*"/>
+            </Grid.RowDefinitions>
+            <local:FlightBoard x:Name="Board" Grid.Row="1"></local:FlightBoard>
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Connect" Command="{Binding ConnectCommand}"></Button>
+                <Button Content="Settings" Grid.Column="1" Command="{Binding SettingsCommand}"></Button>
+            </Grid>
+            
+        </Grid>
+        
     </Grid>
 </Window>

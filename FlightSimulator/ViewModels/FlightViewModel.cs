@@ -7,16 +7,18 @@ using System.ComponentModel;
 using FlightSimulator.Model;
 using System.Windows.Input;
 using System.Windows.Media;
+using FlightSimulator.Model.Interface;
 
 namespace FlightSimulator.ViewModels
 {
     class FlightViewModel : BaseNotify
     {
         private FlightModel _model;
-        
+        private ISettingsModel _settings;
 
-        public FlightViewModel(FlightModel model)
+        public FlightViewModel(FlightModel model, ISettingsModel settings)
         {
+            _settings = settings;
             _model = model;
         }
 
@@ -30,7 +32,7 @@ namespace FlightSimulator.ViewModels
             {
                 _model.Aileron = value;
                 NotifyPropertyChanged("Aileron");
-                writeOne("set controls/flight/aileron " + value, "127.0.0.1", 5402);
+                writeOne("set controls/flight/aileron " + value, _settings.FlightServerIP, _settings.FlightCommandPort);
             }
         }
         public double Elevator
@@ -43,7 +45,7 @@ namespace FlightSimulator.ViewModels
             {
                 _model.Elevator = value;
                 NotifyPropertyChanged("Elevator");
-                writeOne("set controls/flight/elevator "+value, "127.0.0.1", 5402);
+                writeOne("set controls/flight/elevator "+value, _settings.FlightServerIP, _settings.FlightCommandPort);
             }
         }
         public bool IsManual
@@ -69,7 +71,7 @@ namespace FlightSimulator.ViewModels
             {
                 _model.Rudder = value;
                 NotifyPropertyChanged("Rudder");
-                writeOne("set controls/flight/rudder "+value, "127.0.0.1", 5402);
+                writeOne("set controls/flight/rudder "+value, _settings.FlightServerIP, _settings.FlightCommandPort);
 
             }
         }
@@ -83,7 +85,7 @@ namespace FlightSimulator.ViewModels
             {
                 _model.Throttle = value;
                 NotifyPropertyChanged("Throttle");
-                writeOne("set /controls/engines/current-engine/throttle " + value, "127.0.0.1", 5402);
+                writeOne("set /controls/engines/current-engine/throttle " + value, _settings.FlightServerIP, _settings.FlightCommandPort);
             }
         }
         /*public void connect(string ip, int port)
@@ -135,7 +137,7 @@ namespace FlightSimulator.ViewModels
         private void Ok()
         {
             
-            write(data, "127.0.0.1", 5402);
+            write(data, _settings.FlightServerIP, _settings.FlightCommandPort);
             Background = "White";
 
 
