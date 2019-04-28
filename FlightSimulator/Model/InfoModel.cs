@@ -22,9 +22,10 @@ namespace FlightSimulator.Model
             {
                 IPEndPoint ep = new IPEndPoint(ip, port);
                 TcpListener listener = new TcpListener(ep);
-                while(true)
+                listener.Start();
+                while (true)
                 {
-                    listener.Start();
+                    
 
                     TcpClient client = listener.AcceptTcpClient();
 
@@ -43,20 +44,7 @@ namespace FlightSimulator.Model
                                 line = reader.ReadLine();
                             }
                         }
-                        //int x = 0;
-                        /*
-                        while (true)
-                        {
-                            x++;
-                            byte[] allData = reader.ReadBytes(1024);
-                            //reader.ReadString();
-                            string line = System.Text.Encoding.Default.GetString(allData);
-                            List<string> values = line.Split(',').ToList<string>();
-                            Lon = Convert.ToDouble(values[0]);
-                            Lat = Convert.ToDouble(values[1]);
-
-                        }
-                        */
+              
                     }
                     client.Close();
                 }
