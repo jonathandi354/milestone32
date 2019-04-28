@@ -26,10 +26,6 @@ namespace FlightSimulator.Views
         public SettingsWindow()
         {
             InitializeComponent();
-            SettingVM vm = new SettingVM();
-            this.DataContext = vm;
-            if (vm.CloseAction == null)
-                vm.CloseAction = new Action(this.Close);
         }
 
     }

@@ -57,17 +57,18 @@ namespace FlightSimulator.ViewModels
             }
         }
 
-        public void initiateSettingModel()
+        public SettingVM(ApplicationSettingsModel settingM)
         {
-            this.settingModel = new ApplicationSettingsModel();
+            this.settingModel = settingM;
         }
 
         private void SetData()
         {
+            /*
             if (settingModel == null)
             {
                 initiateSettingModel();
-            }
+            }*/
             this.settingModel.FlightServerIP = this.IPSetting;
             this.settingModel.FlightInfoPort = Int32.Parse(this.InfoPortSetting);
             this.settingModel.FlightCommandPort = Int32.Parse(this.CommandPortSetting);

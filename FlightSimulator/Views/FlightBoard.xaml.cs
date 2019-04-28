@@ -33,14 +33,13 @@ namespace FlightSimulator.Views
         ObservableDataSource<Point> planeLocations = null;
         public FlightBoard()
         {
-            InitiateVM(new InfoModel());
             InitializeComponent();
             //flightBoardVM.ConnectModel(IPAddress.Parse("127.0.0.1"), 5400);
         }
-
-        public void InitiateVM(AFlightGearInfoModel m)
+        
+        public void InitiateVM(FlightBoardViewModel m)
         {
-            this.flightBoardVM = new FlightBoardViewModel(m);
+            this.flightBoardVM = m;
             this.flightBoardVM.PropertyChanged += Vm_PropertyChanged;
         }
 

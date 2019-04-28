@@ -19,12 +19,13 @@ namespace FlightSimulator
         protected override void OnStartup(StartupEventArgs e)
         {
             AFlightGearInfoModel infoModel = new InfoModel();
-            ITelnetClient commandModel = new Client();
+            FlightModel commandModel = new FlightModel(new Client());
+            ApplicationSettingsModel settingM = new ApplicationSettingsModel();
             base.OnStartup(e);
             MainWindow main = new MainWindow();
-            main.DataContext = new MainPageVM();
-            main.Board.DataContext = new FlightBoardViewModel(infoModel);
-            main.Control.DataContext = commandModel;
+            main.DataContext = new MainPageVM(infoModel, settingM);
+            main.Board.InitiateVM(new FlightBoardViewModel(infoModel));
+            main.Control.DataContext = new FlightViewModel(commandModel, settingM);
             main.Show();
         }
     }
