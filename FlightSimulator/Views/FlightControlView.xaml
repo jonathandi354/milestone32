@@ -90,7 +90,10 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <TextBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="FlightCode"  Text="{Binding Path=Data, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Background, Converter={StaticResource converter}}" ></TextBox>
+                <TextBox Grid.Row="0" Grid.ColumnSpan="2" x:Name="FlightCode"  Text="{Binding Path=Data, UpdateSourceTrigger=PropertyChanged}" Background="{Binding Background, Converter={StaticResource converter}}" 
+                         TextWrapping="Wrap"
+                        AcceptsReturn="True"
+                        VerticalScrollBarVisibility="Visible"></TextBox>
                 <Button Grid.Row="1" Content="OK" Grid.Column="0"  Command="{Binding OkCommand}"></Button>
                 <Button Grid.Row="1" Content="Clear" Grid.Column="1" Command="{Binding ClearCommand}"></Button>
             </Grid>
