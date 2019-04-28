@@ -27,8 +27,8 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Button Content="Connect" Command="{Binding ConnectCommand}"></Button>
-                <Button Content="Settings" Grid.Column="1" Command="{Binding SettingsCommand}"></Button>
+                <Button Content="Connect" Command="{Binding ConnectCommand}" Padding="0" Width="60"></Button>
+                <Button Content="Settings" Grid.Column="1" Command="{Binding SettingsCommand}" Width="50"></Button>
             </Grid>
             
         </Grid>
