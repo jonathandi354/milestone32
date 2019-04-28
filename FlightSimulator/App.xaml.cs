@@ -1,4 +1,7 @@
-﻿using System;
+﻿using FlightSimulator.Model;
+using FlightSimulator.Model.Interface;
+using FlightSimulator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,9 +18,14 @@ namespace FlightSimulator
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+            AFlightGearInfoModel infoModel = new InfoModel();
+            ITelnetClient commandModel = new Client();
             base.OnStartup(e);
             MainWindow main = new MainWindow();
-            main.Control.DataContext = new FlightViewModel(new FlightModel(new Client()), );
+            main.DataContext = new MainPageVM();
+            main.Board.DataContext = new FlightBoardViewModel(infoModel);
+            main.Control.DataContext = commandModel;
+            main.Show();
         }
     }
 }

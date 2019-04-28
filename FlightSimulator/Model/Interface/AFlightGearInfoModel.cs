@@ -53,7 +53,8 @@ namespace FlightSimulator.Model.Interface
                 }
 
             }
-        }        
+        }
+        
 
         public abstract void Connect(IPAddress ip, int port);
 
