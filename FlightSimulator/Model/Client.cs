@@ -12,15 +12,7 @@ namespace FlightSimulator.Model
 {
     class Client:ITelnetClient
     {
-        /*TcpClient client;
-        NetworkStream stream;
-        Stream s;
-        public void connect(string ip, int port)
-        {
-            //client = new TcpClient(ip, port);
-            //stream = client.GetStream();
-            s = client.GetStream();
-        }*/
+        
         public void write(string data, string ip, int port)
         {
             //Thread myThread = new Thread(() => writeOnThread(data));
@@ -80,23 +72,5 @@ namespace FlightSimulator.Model
             running = false;
         }
 
-        /*public string read()
-        {
-            Byte[] data = new Byte[256];
-            
-            // String to store the response ASCII representation.
-            String responseData = String.Empty;
-
-            // Read the first batch of the TcpServer response bytes.
-            Int32 bytes = stream.Read(data, 0, data.Length);
-            responseData = System.Text.Encoding.ASCII.GetString(data, 0, bytes);
-            return responseData;
-        }*/
-        /*public void disconnect()
-        {
-            //stream.Dispose();
-           // stream.Close();
-            client.Close();
-        }*/
     }
 }
